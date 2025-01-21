@@ -13,7 +13,7 @@ export default function AdviceCard() {
     fetch("https://api.adviceslip.com/advice")
       .then((res) => res.json())
       .then((data) => {
-        setAdviceID(`Advice #${data.slip.id}`);
+        setAdviceID(`ADVICE #${data.slip.id}`);
         setAdvice(`"${data.slip.advice}"`);
         setError(false);
       })
@@ -29,7 +29,7 @@ export default function AdviceCard() {
 
   return (
     <div className="advice-card p-5 pb-10 relative max-w-[500px] mx-auto text-center bg-[#323a49] text-[#cce1e6] rounded-lg">
-      <p className={`${error ? "text-red-600 font-bold" : "text-[#53ffab]"} lg:text-lg`}>
+      <p className={`${error ? "text-red-600 font-bold" : "text-[#53ffab]"} lg:text-lg tracking-[0.25em] italic`}>
         {adviceID || "AdviGen"}
       </p>
       <p className="advice-text md:text-lg lg:text-xl my-5">
