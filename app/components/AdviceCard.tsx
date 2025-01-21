@@ -32,7 +32,7 @@ export default function AdviceCard() {
       <p className={`${error ? "text-red-600 font-bold" : "text-[#53ffab]"} lg:text-lg`}>
         {adviceID || "AdviGen"}
       </p>
-      <p className="advice-text md:text-lg lg:text-xl">
+      <p className="advice-text md:text-lg lg:text-xl my-5">
         {advice || "Click the button to get a random advice."}
       </p>
       <Image
