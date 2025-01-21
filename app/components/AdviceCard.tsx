@@ -28,7 +28,7 @@ export default function AdviceCard() {
   };
 
   return (
-    <div className="advice-card p-5 pb-10 relative max-w-[500px] mx-auto text-center bg-[#323a49] text-[#cce1e6] rounded-lg">
+    <div className="advice-card p-5 pb-10 relative min-w-[280px] max-w-[500px] mx-auto text-center bg-[#323a49] text-[#cce1e6] rounded-lg">
       <p className={`${error ? "text-red-600 font-bold" : "text-[#53ffab]"} lg:text-lg tracking-[0.25em] italic`}>
         {adviceID || "AdviGen"}
       </p>
