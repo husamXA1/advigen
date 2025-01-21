@@ -49,8 +49,8 @@ export default function AdviceCard() {
         <Image
           src={"/assets/dice.svg"}
           alt="dice-icon"
-          width={25}
-          height={25}
+          width={20}
+          height={20}
         />
       </button>
     </div>
