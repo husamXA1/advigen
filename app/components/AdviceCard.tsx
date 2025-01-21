@@ -8,14 +8,21 @@ export default function AdviceCard() {
   const [advice, setAdvice] = useState("");
   const [adviceID, setAdviceID] = useState("");
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const fetchAdvice = () => {
+    setLoading(true)
+    setAdviceID("Loading...")
+    setAdvice("Getting a new advice...")
     fetch("https://api.adviceslip.com/advice")
       .then((res) => res.json())
       .then((data) => {
-        setAdviceID(`ADVICE #${data.slip.id}`);
-        setAdvice(`"${data.slip.advice}"`);
-        setError(false);
+        setTimeout(() => {
+            setAdviceID(`ADVICE #${data.slip.id}`);
+            setAdvice(`"${data.slip.advice}"`);
+            setError(false);
+            setLoading(false);
+        }, 300)
       })
       .catch((reason) => {
         console.error(reason);
@@ -23,16 +30,17 @@ export default function AdviceCard() {
         setAdvice(
           "Error fetching advice! Check your internet connection and try again!"
         );
+        setLoading(false);
         setError(true);
       });
   };
 
   return (
     <div className="advice-card p-5 pb-10 relative min-w-[280px] max-w-[500px] mx-auto text-center bg-[#323a49] text-[#cce1e6] rounded-lg">
-      <p className={`${error ? "text-red-600 font-bold" : "text-[#53ffab]"} lg:text-lg tracking-[0.25em] italic`}>
+      <p className={`${error ? "text-red-600 font-bold" : "text-[#53ffab]"} ${loading ? "animate-pulse" : ""} lg:text-lg tracking-[0.25em] italic`}>
         {adviceID || "AdviGen"}
       </p>
-      <p className="advice-text md:text-lg lg:text-xl my-5">
+      <p className={`${loading ? "animate-pulse" : ""} advice-text md:text-lg lg:text-xl my-5`}>
         {advice || "Click the button to get a random advice."}
       </p>
       <Image
